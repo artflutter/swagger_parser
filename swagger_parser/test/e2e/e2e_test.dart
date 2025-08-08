@@ -175,6 +175,19 @@ void main() {
       );
     });
 
+    test('all_of', () async {
+      await e2eTest(
+        'basic/all_of',
+        (outputDirectory, schemaPath) => SWPConfig(
+          outputDirectory: outputDirectory,
+          schemaPath: schemaPath,
+          jsonSerializer: JsonSerializer.freezed,
+          putClientsInFolder: true,
+        ),
+        schemaFileName: 'openapi.yaml',
+      );
+    });
+
     test('basic_requests.2.0', () async {
       await e2eTest(
         'basic/basic_requests.2.0',

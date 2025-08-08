@@ -15,6 +15,7 @@ class GetUsersResponse with _$GetUsersResponse {
   const factory GetUsersResponse({
     @JsonKey(includeIfNull: true) required num? nextCursor,
     @JsonKey(includeIfNull: true) required String? previousCursor,
+    required String id,
     required List<UserDto> data,
   }) = _GetUsersResponse;
 

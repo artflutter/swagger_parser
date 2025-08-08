@@ -67,7 +67,8 @@
                                        "example":"01AN4Z07BY"
                                     }
                                  },
-                                 "required":[
+                                 "required": [
+                                    "id",
                                     "data",
                                     "nextCursor"
                                  ]
@@ -136,11 +137,16 @@
                   "type":"string",
                   "nullable":true,
                   "example":"01EF4Z07BW"
+               },
+               "id":{
+                  "type":"string"
                }
+
             },
             "required":[
                "nextCursor",
-               "previousCursor"
+               "previousCursor",
+               "id"
             ]
          },
          "UserDto":{

@@ -1,0 +1,99 @@
+openapi: 3.0.0
+
+info:
+  title: Della Connect Mobile Application API
+  version: 1.0.0
+
+servers:
+  - url: https://api-dev.dellaconnect.com/della-connect-mobile/v1
+    description: Development Server
+  - url: http://127.0.0.1:3000/della-connect-mobile/v1
+    description: Local Server
+
+tags:
+  - name: Notification
+
+paths:
+  /units/notifications:
+    get:
+      operationId: getNotifications
+      summary: Returns the list of resident notifications.
+      tags:
+        - Notification
+      responses:
+        '200':
+          description: List of Notifications.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotificationsList'
+components:
+  schemas:
+    ApiNotificationsList:
+      type: object
+      required:
+        - data
+        - pagination
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiNotificationResponse'
+
+    ApiNotificationResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiNotification'
+        - type: object
+          properties:
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+          required:
+            - id
+            - createdAt
+            - updatedAt
+
+    ApiNotification:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        content:
+          type: string
+        unitId:
+          type: string
+          format: uuid
+        residentId:
+          type: string
+          format: uuid
+        parcelId:
+          type: string
+          format: uuid
+        maintenanceId:
+          type: string
+          format: uuid
+        announcementId:
+          type: string
+          format: uuid
+        eventId:
+          type: string
+          format: uuid
+        amenityReservationId:
+          type: string
+          format: uuid
+        eventReservationId:
+          type: string
+          format: uuid
+        messagingId:
+          type: string
+          format: uuid
+      required:
+        - status
+        - unitId
+        - residentId
+        - content
+        - type

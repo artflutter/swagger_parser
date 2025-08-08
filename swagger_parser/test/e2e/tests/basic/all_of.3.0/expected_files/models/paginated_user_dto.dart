@@ -14,6 +14,7 @@ class PaginatedUserDto with _$PaginatedUserDto {
   const factory PaginatedUserDto({
     @JsonKey(includeIfNull: true) required String? nextCursor,
     @JsonKey(includeIfNull: true) required String? previousCursor,
+    required String id,
     required List<UserDto> data,
   }) = _PaginatedUserDto;
 
