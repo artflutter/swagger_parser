@@ -2,8 +2,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
-import 'dart:convert';
-import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -15,8 +13,8 @@ abstract class FileClient {
 
   /// Download a file
   @GET('/files/{id}')
-  @DioResponseType(ResponseType.stream)
-  Stream<String> downloadFile({
+  @DioResponseType(ResponseType.bytes)
+  Future<HttpResponse<List<int>>> downloadFile({
     @Path('id') required String id,
   });
 }
